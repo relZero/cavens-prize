@@ -1,0 +1,363 @@
+html{ height:100%; }
+ul{ list-style:none; padding:0; margin:0; }
+body{ height:100%; overflow:hidden; background:url("../images/lottery.jpg") no-repeat center; background-size:auto 100%; }
+input{ outline:none; }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+  -webkit-appearance:none;
+}
+input[type="number"]{
+  -moz-appearance:textfield;
+}
+.ui-tab-bd{ display:none; }
+.ui-tab-bd.current{ display:block; }
+.lottery-wave1{ position:absolute; display:block; left:-3812px; bottom:-10px; width:7624px; overflow:hidden; animation:waveMove 0.8s infinite alternate; }
+.lottery-wave1 img{ float:right; }
+.lottery-wave1 .wave-bottom2 img{ margin-right:-20px; }
+.lottery-wave2{ position:absolute; display:block; left:-70px; bottom:0; width:7320px; height:76px; overflow:hidden; animation:waveMove 0.8s 0.4s infinite alternate; }
+.lottery-wave2 img{ float:left; }
+.lottery-wave2 .wave-up2 img{ margin-left:-20px; }
+.lottery-outer{ display:none; }
+.indexContainer{ position:absolute; left:0; top:0; width:100%; height:100%; }
+#drawCanvas{position:absolute; left:0; top:0; width:100%; height:100%; background:#000; opacity:0; }
+#drawCanvas canvas{ width:100% !important; height:100% !important; }
+a{ text-decoration:none; }
+
+#holder{ position:relative; height:100%; }
+#holder canvas{ width:100% !important; height:100% !important; display:block; background:none !important; }
+#indexContainer{ position:absolute; left:0; top:0; display:block; }
+#indexContainer img{ width:50px; height:50px; display:block; border-radius:10px; border:#fff 2px solid; opacity:0.7; transform:rotateX(180deg); }
+#indexContainer > div{ transform:rotateX(180deg); }
+#indexContainer .element{ background:none !important; }
+#container{ position:absolute; left:0; top:0; display:block; }
+#container img{ width:120px; height:120px; display:block; border-radius:10px; border:#fff 2px solid; }
+.lottery-ball{ position:absolute; left:0; top:0; width:100%; height:100%; background-size:839px 800px }
+.lottery-ball .logo-zmsc{ position:absolute; left:50%; top:50%; margin:-88px 0 0 -314px; width:628px; height:176px; background:url("../images/logo-zmsc.png") no-repeat; }
+.lottery-ball .logo-yfwl{ position:absolute; left:50%; top:50%; margin:-87px 0 0 -313px; width:625px; height:173px; background:url("../images/logo-yfwl.png") no-repeat; }
+
+.lottery-logo{ position:absolute; display:block; left:0; top:0; width:595px; height:186px; background:url("../images/lottery-tag3.png") no-repeat; }
+.lottery-logo .logo-zmsc{ position:absolute; left:50%; top:50%; margin:-35px 0 0 -132px; width:264px; height:90px; background:url("../images/logo-zmsc.png") no-repeat; background-size:100%; }
+.lottery-logo .logo-yfwl{ position:absolute; left:50%; top:50%; margin:-25px 0 0 -128px; width:256px; height:72px; background:url("../images/logo-yfwl.png") no-repeat; background-size:100%; }
+.lottery-btn{ position:absolute; right:5%; bottom:200px; }
+.lottery-start,
+.lottery-record{ width:176px; height:69px; float:left; margin:0 30px; }
+.lottery-start{ background:url("../images/lottery-start.png") no-repeat; }
+.lottery-record{ background:url("../images/lottery-record.png") no-repeat; }
+.lottery-console{ position:absolute; right:5%; top:90px; width:383px; height:80px; padding:0 80px; box-sizing:border-box; background:url("../images/lottery-console.png") no-repeat; font-size:30px; font-weight:bold; line-height:63px; color:#fff; }
+.lottery-console input{ background:none; border:none; padding:0; width:45px; color:#fff; font-size:30px; text-align:center; }
+.lottery-console a{ position:absolute; top:0; display:block; width:80px; height:63px; line-height:63px; }
+.lottery-console .lottery-num{ padding-left:10px; }
+.lottery-console .lottery-left{ left:0; }
+.lottery-console .lottery-right{ right:0; }
+.winner-box{ position:absolute; left:50%; top:50%; margin:-334px 0 0 -630px; width:1205px; height:668px; background:url("../images/winner-box.png") no-repeat; }
+.winner-title{ margin:-75px auto 0; width:682px; height:145px; text-align:center; line-height:126px; background:url("../images/prize-title.png") no-repeat; font-size:36px; color:#c32830; font-weight:bold; }
+.winner-close{ position:absolute; right:-10px; top:-10px; display:block; width:130px; height:111px; background:url("../images/winner-close.png") no-repeat; }
+.winner-list{ padding:0 55px 0 45px; }
+.winner-list .list-tab{ }
+.winner-list .list-tab ul{ overflow:hidden; }
+.winner-list .list-tab li{ float:left; padding:0 7px; display:none; }
+.winner-list .list-tab li a{ display:block; width:119px; height:49px; border:#e9e19f 2px solid; border-radius:5px 5px 0 0; background:rgba(255, 255, 255, 0.1); text-align:center; line-height:45px; font-size:24px; color:#fff; }
+.winner-list .list-tab .current a{ color:#faec12; }
+.winner-list .list-box{ margin-top:-2px; border:#e9e19f 3px solid; border-radius:5px; background:rgba(255, 255, 255, 0.1); height:456px; overflow:auto; }
+.winner-list .list-box::-webkit-scrollbar{
+  width:5px;
+  border-radius:3px;
+}
+.winner-list .list-box::-webkit-scrollbar-track{
+  background-color:rgba(0, 0, 0, .5);
+  border-radius:2em;
+}
+.winner-list .list-box::-webkit-scrollbar-thumb{
+  background-color:rgba(255, 255, 255, 0.5);
+  border-radius:2em;
+}
+.winner-list .list-box ul{ overflow:hidden; }
+.winner-list .list-box li{ position:relative; float:left; padding-left:50px; margin:0 20px; }
+.winner-list .list-box li i{ position:absolute; left:0; top:50%; margin-top:-18px; font-style:normal; color:#fff; font-size:26px; }
+.winner-list .list-box li p{ padding:10px 0 0; position:relative; min-height:60px; margin:20px 0; }
+.winner-list .list-box li p img{ position:absolute; top:0; left:0; width:60px; height:60px; display:block; border-radius:50%; }
+.winner-list .list-box li p em{ display:block; margin-left:15px; width:168px; padding:0 40px 0 50px; font-style:normal; font-size:20px; color:#fff; height:40px; line-height:40px; background:linear-gradient(to right, rgba(255, 255, 255, .2), rgba(255, 255, 255, 0)); }
+.winner-list .list-box.table-box li p em{ width:350px; }
+/*
+.winner-list .list-bd .bd-tab{ height:46px; background:linear-gradient(#42a2c5, #1367a9); border-bottom:#428eb9 2px solid;  }
+.winner-list .list-bd .bd-tab ul{ overflow:hidden; }
+.winner-list .list-bd .bd-tab li{ float:left; }
+.winner-list .list-bd .bd-tab li a{ display:block; width:142px; height:46px; text-align:center; line-height:44px; color:#a3e4fb; }
+.winner-list .list-bd .bd-tab li.current a{ background:url("../images/tab-btn-hover.png") no-repeat; }
+.winner-list .list-bd .bd-box{ padding-top:12px; }
+.winner-list .list-bd .bd-box ul{ overflow:hidden; }
+.winner-list .list-bd .bd-box li{ position:relative; float:left; padding-left:50px; margin:0 20px; }
+.winner-list .list-bd .bd-box li i{ position:absolute; left:0; top:50%; margin-top:-18px; font-style:normal; color:#fff; font-size:26px; }
+.winner-list .list-bd .bd-box li p{ padding:10px 0 0 ; position:relative; min-height:60px; margin:20px 0; }
+.winner-list .list-bd .bd-box li p img{ position:absolute; top:0; left:0; width:60px; height:60px; display:block; border-radius:50%; }
+.winner-list .list-bd .bd-box li p em{ display:block; margin-left:15px; padding:0 40px 0 50px; font-style:normal; font-size:20px; color:#fff; height:40px; line-height:40px; background:linear-gradient(to right, rgba(255, 255, 255, .2), rgba(255, 255, 255, 0)); }
+*/
+.lottery-award{ position:absolute; left:0; top:0; width:100%; height:100%; }
+.lottery-award ul{ overflow:hidden; height:100%; }
+.lottery-award li{ position:absolute; left:50%; top:50%; overflow:hidden; transform:scale(0) translate(0, 0); }
+.lottery-award li:nth-child(1).current{ animation:move1 2s forwards; margin:-95px 0 0 -100px; }
+.lottery-award li:nth-child(2).current{ animation:move2 2s forwards; margin:-95px 0 0 -100px; }
+.lottery-award li:nth-child(3).current{ animation:move3 2s forwards; margin:-95px 0 0 -100px; }
+.lottery-award li:nth-child(4).current{ animation:move4 2s forwards; margin:-95px 0 0 -100px; }
+.lottery-award li:nth-child(4).current3{ animation:move6 2s forwards; margin:-95px 0 0 -100px; }
+.lottery-award li:nth-child(5).current{ animation:move5 2s forwards; margin:-95px 0 0 -100px; }
+.lottery-award li:nth-child(5).current2{ animation:move6 2s forwards; margin:-95px 0 0 -100px; }
+.lottery-award li:nth-child(5).current3{ animation:move7 2s forwards; margin:-95px 0 0 -100px; }
+.lottery-award li:nth-child(6).current{ animation:move6 2s forwards; margin:-95px 0 0 -100px; }
+.lottery-award li:nth-child(6).current2{ animation:move7 2s forwards; margin:-95px 0 0 -100px; }
+.lottery-award li:nth-child(6).current3{ animation:move8 2s forwards; margin:-95px 0 0 -100px; }
+.lottery-award li:nth-child(7).current{ animation:move7 2s forwards; margin:-95px 0 0 -100px; }
+.lottery-award li:nth-child(7).current2{ animation:move8 2s forwards; margin:-95px 0 0 -100px; }
+.lottery-award li:nth-child(8).current{ animation:move8 2s forwards; margin:-95px 0 0 -100px; }
+.lottery-award li:nth-child(8).current2{ animation:move9 2s forwards; margin:-95px 0 0 -100px; }
+.lottery-award li:nth-child(9).current{ animation:move9 2s forwards; margin:-95px 0 0 -100px; }
+.lottery-award li:nth-child(10).current{ animation:move10 2s forwards; margin:-95px 0 0 -100px; }
+.lottery-award li:nth-child(11).current{ animation:move11 2s forwards; margin:-95px 0 0 -100px; }
+.lottery-award li:nth-child(12).current{ animation:move12 2s forwards; margin:-95px 0 0 -100px; }
+.lottery-award li:nth-child(13).current{ animation:move13 2s forwards; margin:-95px 0 0 -100px; }
+.lottery-award li:nth-child(14).current{ animation:move14 2s forwards; margin:-95px 0 0 -100px; }
+.lottery-award li:nth-child(15).current{ animation:move15 2s forwards; margin:-95px 0 0 -100px; }
+.lottery-award li img{ width:150px; height:150px; display:block; border-radius:50%; border:#fec90b 5px solid; margin:auto; box-shadow:0 0 15px #4589bc; }
+.lottery-award li em,
+.lottery-award li p{ display:block; margin:0; width:200px; height:40px; line-height:40px; text-align:center; font-style:normal; color:#fff; font-size:24px; }
+.prize-title{ position:absolute; left:50%; top:8%; text-shadow:0 0 15px #426898; margin-left:-341px; width:682px; height:145px; line-height:126px; background:url("../images/prize-title.png") no-repeat; text-align:center; font-size:36px; color:#c32830; }
+.prize-inner{ position:relative; width:1200px; margin:auto; height:100%; }
+
+.fireworks-box{ position:absolute; width:100%; height:100%; left:0; top:0; }
+.fireworks-box li{ position:absolute; width:162px; height:162px; display:none; }
+.fireworks-box .fireworks-big{ position:absolute; left:0; top:0; width:162px; height:162px; background:url("../images/fireworks-big.png") no-repeat; background-size:100% 100%; opacity:0; }
+.fireworks-box .fireworks-middle{ position:absolute; left:54px; top:54px; width:53px; height:53px; background:url("../images/fireworks-middle.png") no-repeat; background-size:100% 100%; opacity:0; }
+.fireworks-box .fireworks-little{ position:absolute; top:72px; left:72px; width:16px; height:16px; background:url("../images/fireworks-little.png") no-repeat; background-size:100% 100%; opacity:0; }
+.fireworks-line{ position:absolute; display:block; width:2px; height:1px; background:#f5ecaf; bottom:0; opacity:0; }
+/*.fireworks-box li.current{ animation:fireworkDown 1s 3.3s forwards; }*/
+.fireworks-box li.current .fireworks-big{ animation:fireworkExpand 0.1s 0.4s forwards; }
+.fireworks-box li.current .fireworks-middle{ animation:fireworkExpand 0.1s 0.3s forwards; }
+.fireworks-box li.current .fireworks-little{ animation:fireworkExpand 0.1s 0.2 forwards; }
+.logo{ position:absolute; left:540px; top:62px; width:501px; height:68px; background:url("../images/logo.png") no-repeat; background-size:100% 100%; }
+.tag-left{ position:absolute; left:0; top:0; width:590px; height:426px; background:url("../images/tag-left.png") no-repeat; background-size:100% 100%; }
+.tag-right{ position:absolute; right:0; top:0; width:275px; height:475px; background:url("../images/tag-right.png") no-repeat; background-size:100% 100%; }
+.lantern-left,
+.lantern-right{ position:absolute; top:0; width:320px; height:484px; background:url("../images/lantern.png") no-repeat; background-size:100% 100%; animation:lanternRoutate infinite; transform-origin:50% 0%; }
+.lantern-left{ left:195px; animation-delay:0.4s; animation-duration:3.7s; }
+.lantern-right{ right:200px; animation-delay:0.7s; animation-duration:4.4s; }
+.fan-left{ position:absolute; left:0; bottom:110px; width:243px; height:842px; background:url("../images/fan-left.png") no-repeat; background-size:100% 100%; }
+.fan-right{ position:absolute; right:0; bottom:90px; width:256px; height:807px; background:url("../images/fan-right.png") no-repeat; background-size:100% 100%; }
+.wave-flower{ position:absolute; left:60px; bottom:10px; width:394px; height:198px; background:url("../images/flower.png") no-repeat; background-size:100% 100%; }
+.wave-bird{ position:absolute; right:20px; bottom:10px; width:571px; height:394px; background:url("../images/bird.png") no-repeat; background-size:100% 100%; }
+.wave-gold{ position:absolute; left:50%; bottom:10px; margin-left:-684px; width:1367px; height:127px; background:url("../images/gold.png") no-repeat; background-size:100% 100%; }
+.wave-fish{ position:absolute; left:0; bottom:0; width:150%; height:249px; margin-left:-513px; background:url("../images/fish.png") no-repeat left top; background-size:513px 100%; animation:fishMove 1.5s 0.4s infinite alternate; }
+/*低分辨率*/
+.tag-half .logo{ left:270px; top:31px; width:251px; height:34px; }
+.tag-half .lottery-wave1{ left:-1906px; bottom:-5px; width:3812px; }
+.tag-half .lottery-wave1 img{ width:1906px; height:36px; }
+.tag-half .lottery-wave1 .wave-bottom2 img{ margin-right:-10px; }
+.tag-half .lottery-wave2{ left:-35px; bottom:0; width:3660px; height:38px; }
+.tag-half .lottery-wave2 img{ width:1830px; height:38px; }
+.tag-half .lottery-wave2 .wave-up2 img{ margin-left:-10px; }
+.tag-half .tag-left{ width:295px; height:213px; }
+.tag-half .tag-right{ width:138px; height:238px; }
+.tag-half .lantern-left,
+.tag-half .lantern-right{ width:160px; height:242px; }
+.tag-half .lantern-left{ left:98px; }
+.tag-half .lantern-right{ right:100px; }
+.tag-half .fan-left{ bottom:55px; width:122px; height:421px; }
+.tag-half .fan-right{ bottom:45px; width:128px; height:404px; }
+.tag-half .wave-flower{ left:30px; bottom:5px; width:197px; height:99px; }
+.tag-half .wave-bird{ right:10px; bottom:5px; width:286px; height:197px; }
+.tag-half .wave-gold{ bottom:5px; margin-left:-342px; width:684px; height:64px; }
+.tag-half .wave-fish{ height:125px; margin-left:-257px; background-size:257px 100%; }
+
+@keyframes move1{
+  0%{ transform:scale(0); left:50%; top:50%; }
+  25%{ transform:scale(0); left:50%; top:50%; }
+  45%{ transform:scale(1); left:50%; top:50%; }
+  65%{ transform:scale(1); left:50%; top:50%; }
+  100%{ transform:scale(1); left:120px; top:400px; }
+}
+
+@keyframes move2{
+  0%{ transform:scale(0); left:50%; top:50%; }
+  25%{ transform:scale(0); left:50%; top:50%; }
+  45%{ transform:scale(1); left:50%; top:50%; }
+  65%{ transform:scale(1); left:50%; top:50%; }
+  100%{ transform:scale(1); left:360px; top:400px; }
+}
+
+@keyframes move3{
+  0%{ transform:scale(0); left:50%; top:50%; }
+  25%{ transform:scale(0); left:50%; top:50%; }
+  45%{ transform:scale(1); left:50%; top:50%; }
+  65%{ transform:scale(1); left:50%; top:50%; }
+  100%{ transform:scale(1); left:600px; top:400px; }
+}
+
+@keyframes move4{
+  0%{ transform:scale(0); left:50%; top:50%; }
+  25%{ transform:scale(0); left:50%; top:50%; }
+  45%{ transform:scale(1); left:50%; top:50%; }
+  65%{ transform:scale(1); left:50%; top:50%; }
+  100%{ transform:scale(1); left:840px; top:400px; }
+}
+@keyframes move5{
+  0%{ transform:scale(0); left:50%; top:50%; }
+  25%{ transform:scale(0); left:50%; top:50%; }
+  45%{ transform:scale(1); left:50%; top:50%; }
+  65%{ transform:scale(1); left:50%; top:50%; }
+  100%{ transform:scale(1); left:1080px; top:400px; }
+}
+@keyframes move6{
+  0%{ transform:scale(0); left:50%; top:50%; }
+  25%{ transform:scale(0); left:50%; top:50%; }
+  45%{ transform:scale(1); left:50%; top:50%; }
+  65%{ transform:scale(1); left:50%; top:50%; }
+  100%{ transform:scale(1); left:120px; top:670px; }
+}
+@keyframes move7{
+  0%{ transform:scale(0); left:50%; top:50%; }
+  25%{ transform:scale(0); left:50%; top:50%; }
+  45%{ transform:scale(1); left:50%; top:50%; }
+  65%{ transform:scale(1); left:50%; top:50%; }
+  100%{ transform:scale(1); left:360px; top:670px; }
+}
+@keyframes move8{
+  0%{ transform:scale(0); left:50%; top:50%; }
+  25%{ transform:scale(0); left:50%; top:50%; }
+  45%{ transform:scale(1); left:50%; top:50%; }
+  65%{ transform:scale(1); left:50%; top:50%; }
+  100%{ transform:scale(1); left:600px; top:670px; }
+}
+@keyframes move9{
+  0%{ transform:scale(0); left:50%; top:50%; }
+  25%{ transform:scale(0); left:50%; top:50%; }
+  45%{ transform:scale(1); left:50%; top:50%; }
+  65%{ transform:scale(1); left:50%; top:50%; }
+  100%{ transform:scale(1); left:840px; top:670px; }
+}
+@keyframes move10{
+  0%{ transform:scale(0); left:50%; top:50%; }
+  25%{ transform:scale(0); left:50%; top:50%; }
+  45%{ transform:scale(1); left:50%; top:50%; }
+  65%{ transform:scale(1); left:50%; top:50%; }
+  100%{ transform:scale(1); left:1080px; top:670px; }
+}
+@keyframes move11{
+  0%{ transform:scale(0); left:50%; top:50%; }
+  25%{ transform:scale(0); left:50%; top:50%; }
+  45%{ transform:scale(1); left:50%; top:50%; }
+  65%{ transform:scale(1); left:50%; top:50%; }
+  100%{ transform:scale(1); left:120px; top:920px; }
+}
+@keyframes move12{
+  0%{ transform:scale(0); left:50%; top:50%; }
+  25%{ transform:scale(0); left:50%; top:50%; }
+  45%{ transform:scale(1); left:50%; top:50%; }
+  65%{ transform:scale(1); left:50%; top:50%; }
+  100%{ transform:scale(1); left:360px; top:920px; }
+}
+@keyframes move13{
+  0%{ transform:scale(0); left:50%; top:50%; }
+  25%{ transform:scale(0); left:50%; top:50%; }
+  45%{ transform:scale(1); left:50%; top:50%; }
+  65%{ transform:scale(1); left:50%; top:50%; }
+  100%{ transform:scale(1); left:600px; top:920px; }
+}
+@keyframes move14{
+  0%{ transform:scale(0); left:50%; top:50%; }
+  25%{ transform:scale(0); left:50%; top:50%; }
+  45%{ transform:scale(1); left:50%; top:50%; }
+  65%{ transform:scale(1); left:50%; top:50%; }
+  100%{ transform:scale(1); left:840px; top:920px; }
+}
+@keyframes move15{
+  0%{ transform:scale(0); left:50%; top:50%; }
+  25%{ transform:scale(0); left:50%; top:50%; }
+  45%{ transform:scale(1); left:50%; top:50%; }
+  65%{ transform:scale(1); left:50%; top:50%; }
+  100%{ transform:scale(1); left:1080px; top:920px; }
+}
+
+@keyframes lanternRoutate{
+  0%{ transform:rotate(6deg) }
+  50%{ transform:rotate(-6deg) }
+  100%{ transform:rotate(6deg) }
+}
+
+@keyframes waveMove{
+  from{ transform:translateY(0); }
+  to{ transform:translateY(-5px); }
+}
+
+@keyframes fishMove{
+  from{ transform:translateY(0); }
+  to{ transform:translateY(40px); }
+}
+
+@keyframes fireworkExpand{
+  from{ opacity:0; }
+  to{ opacity:1; }
+}
+
+@keyframes fireworkDown{
+  from{ transform:translateY(0); }
+  to{ transform:translateY(25px); }
+}
+
+.avatar-container{
+  position:fixed;
+  top:50%;
+  left:50%;
+  width:150px;
+  height:150px;
+  transform:translate(-75px, -75px);
+}
+.avatar{
+  /*background-image: url("https://s-media-cache-ak0.pinimg.com/236x/3c/41/74/3c41748bb2526f33c5ff6aa3adcd0b20.jpg");	*/
+  overflow:hidden;
+  border-radius:50%;
+  border:solid 3px rgba(0, 150, 136, 0.3);
+  width:150px;
+  height:150px;
+  background-size:cover;
+  z-index:2;
+  position:absolute;
+  cursor:pointer;
+}
+.avatar img{
+  width:100%;
+  height:100%;
+}
+.pulse{
+  width:150px;
+  height:150px;
+  border-radius:50%;
+  background:rgba(0, 150, 136, 0.2);
+  position:absolute;
+  top:0;
+  left:0;
+  border:solid 2px #00796B;
+  z-index:1;
+}
+.name{
+  position:fixed;
+  top:calc(50% + 130px);
+  text-align:center;
+  left:50%;
+  transform:translateX(-50%);
+  text-transform:uppercase;
+  color:white;
+  background:rgba(0, 150, 136, 0.2);
+  border:solid 2px #00796B;
+  padding:5px 10px;
+  font-family:'Quicksand', sans-serif;
+  opacity:0;
+}
+.info{
+  color:white;
+  text-transform:uppercase;
+  font-family:'Quicksand', sans-serif;
+  position:fixed;
+  right:10px;
+  bottom:10px;
+  font-size:10px;
+  opacity:0.5;
+}

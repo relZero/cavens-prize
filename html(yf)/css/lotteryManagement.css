@@ -1,0 +1,13 @@
+*{ padding:0; margin:0; }
+body{ height:100%; }
+ul{ list-style:none; }
+.ui-tab-bd{ display:none; }
+.ui-tab-bd.active{ display:block; }
+
+.lottery-management{ padding-left:200px; }
+.management-nav{ position:fixed; left:0; top:0; width:200px; height:100%; background:#76838f; }
+.management-nav li a{ display:block; padding-left:20px; height:40px; line-height:40px; color:#fff; font-size:16px; }
+.management-box{ padding:20px; height:100%; }
+.management-box h2{ padding-bottom:20px; }
+.management-box .nav-tabs{ margin-bottom:20px; }
+.lottery-btn{ margin-bottom:20px; }

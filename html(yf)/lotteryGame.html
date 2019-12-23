@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+  <meta name="description" content="bootstrap admin template">
+  <meta name="author" content="">
+  <title>抽奖</title>
+  <link rel="stylesheet" type="text/css" href="css/normalize.css"/>
+  <!--<link rel="stylesheet" type="text/css" href="css/zzsc-demo.css">-->
+  <link rel="stylesheet" type="text/css" href="css/lottery.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+  <div class="fireworks-box">
+    <ul>
+    </ul>
+  </div>
+  <div class="tag-box tag-half">
+    <div class="logo"></div>
+    <div class="lottery-wave2">
+      <div class="wave-up1"><img src="images/wave2.png"></div>
+      <div class="wave-up2"></div>
+    </div>
+    <div class="wave-flower"></div>
+    <div class="wave-bird"></div>
+    <div class="wave-gold"></div>
+    <div class="wave-fish"></div>
+    <div class="wave-fish"></div>
+    <div class="lottery-wave1">
+      <div class="wave-bottom1"><img src="images/wave.png"></div>
+      <div class="wave-bottom2"></div>
+    </div>
+    <div class="lantern-left"></div>
+    <div class="lantern-right"></div>
+    <div class="fan-left"></div>
+    <div class="fan-right"></div>
+    <div class="tag-left"></div>
+    <div class="tag-right"></div>
+  </div>
+  <div class="lottery-outer lottery-index">
+    <!--<div style="text-align:center;clear:both;position:absolute;top:0;left:260px">
+    </div>-->
+    <!-- <div class="lottery-ball">
+      <canvas class="indexContainer"></canvas>
+      <div class="ui" style="display:none;">
+        <input class="ui-input" type="text"/>
+      </div>
+      <div class="overlay">
+        <div class="tabs">
+          <div class="tabs-labels"><span class="tabs-label">Commands</span><span class="tabs-label">Info</span><span class="tabs-label">Share</span></div>
+
+          <div class="tabs-panels">
+            <div class="tabs-panel ui-share" style="background:none;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+
+    <div class="lottery-ball">
+      <div id="drawCanvas"></div>
+      <div id="indexContainer"></div>
+      <!-- <div class="logo-zmsc"></div> -->
+    </div>
+  </div>
+  <div class="lottery-outer lottery-game">
+    <div id="container"></div>
+    <div class="lottery-btn">
+      <a href="javascript:;" class="lottery-start jq-lottery-start" onfocus="this.blur();"></a>
+      <a href="javascript:;" class="lottery-record jq-lottery-record" onfocus="this.blur();"></a>
+    </div>
+    <div class="lottery-console">
+      <div class="lottery-num"><span class="award-word">幸运奖：</span><label><input type="number" value="5" readonly></label><span>人</span></div>
+      <a href="javascript:;" class="lottery-left jq-lottery-left" onfocus="this.blur();"></a>
+      <a href="javascript:;" class="lottery-right jq-lottery-right" onfocus="this.blur();"></a>
+    </div>
+  </div>
+  <div class="lottery-outer lottery-winner">
+    <div class="winner-box">
+      <div class="winner-title">中奖名单</div>
+      <a href="javascript:;" class="winner-close jq-winner-close"></a>
+      <div class="winner-list ui-tab">
+        <div class="list-tab ui-nav-box">
+          <ul class="ui-tab-nav">
+            <li class="lucky-nav current"><a href="javascript:;">幸运奖</a></li>
+            <li class="third-nav"><a href="javascript:;">三等奖</a></li>
+            <li class="second-nav"><a href="javascript:;">二等奖</a></li>
+            <li class="first-nav"><a href="javascript:;">一等奖</a></li>
+            <li class="particular-nav"><a href="javascript:;">特等奖</a></li>
+            <li class="bonus-nav"><a href="javascript:;">红包雨</a></li>
+            <li class="table-nav"><a href="javascript:;">桌奖</a></li>
+          </ul>
+        </div>
+        <div class="list-box lucky-box ui-tab-bd current">
+          <ul></ul>
+        </div>
+        <div class="list-box third-box ui-tab-bd">
+          <ul></ul>
+        </div>
+        <div class="list-box second-box ui-tab-bd">
+          <ul></ul>
+        </div>
+        <div class="list-box first-box ui-tab-bd">
+          <ul></ul>
+        </div>
+        <div class="list-box particular-box ui-tab-bd">
+          <ul></ul>
+        </div>
+        <div class="list-box bonus-box ui-tab-bd">
+          <ul></ul>
+        </div>
+        <div class="list-box table-box ui-tab-bd">
+          <ul></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="lottery-outer lottery-award">
+    <div class="prize-title"></div>
+    <div class=prize-inner>
+      <ul>
+      </ul>
+    </div>
+  </div>
+  <!--<canvas id="canvasOne" width="900" height="700"></canvas>-->
+  <script src="js/jquery-1.11.1.min.js"></script>
+  <!--<script src='js/jquery.warpdrive.js'></script>-->
+  <script src="js/three.min.js"></script>
+  <script src="js/tween.min.js"></script>
+  <script src="js/TrackballControls.js"></script>
+  <script src="js/CSS3DRenderer.js"></script>
+  <script src="js/fireworks.js"></script>
+  <script src="js/indexPicWord.js"></script>
+  <script src="js/indexBall.js"></script>
+  <script src="js/lotteryBall.js"></script>
+  <script src="js/lottery.js"></script>
+</body>
+</html>

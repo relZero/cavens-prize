@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html class="no-js css-menubar" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+  <meta name="description" content="bootstrap admin template">
+  <meta name="author" content="">
+  <title>抽奖后台</title>
+  <link rel="stylesheet" href="css/lotteryManagement.css"/>
+  <link rel="stylesheet" href="css/bootstrap.min.css"/>
+</head>
+<body>
+  <div class="lottery-management">
+    <div class="management-nav">
+      <ul>
+        <li><a href="lotteryManagement.html">员工管理</a></li>
+        <li><a href="javascript:;">红包雨人员管理</a></li>
+        <li><a href="tableManagement.html">桌长管理</a></li>
+        <li><a href="winnerManagement.html">获奖管理</a></li>
+        <li><a href="deleteManagement.html">删除管理</a></li>
+      </ul>
+    </div>
+    <div class="management-box">
+      <h2>红包雨人员管理</h2>
+      <div class="lottery-btn">
+        <label><input type="file" data-url="http://localhost:3006/bonusData" data-deleteurl="http://localhost:3005/deleteBonus"></label>
+        <a class="btn btn-default jq-delete" href="javascript:;" role="button">删除</a>
+        <a class="btn btn-default jq-delete-all" href="javascript:;" role="button">清空所有</a>
+      </div>
+      <table class="table table-bordered table-staff">
+        <thead>
+        <tr>
+          <th>全选</th>
+          <th>员工</th>
+          <th>头像</th>
+          <th>类型</th>
+          <!--<th>操作</th>-->
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <script src="js/jquery-1.11.1.min.js"></script>
+  <script src="js/xlsx.full.min.js"></script>
+  <script src="js/management/management.js"></script>
+  <script src="js/management/bonusManagement.js"></script>
+</body>
+</html>

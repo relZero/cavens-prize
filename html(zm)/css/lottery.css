@@ -1,0 +1,273 @@
+ul{ list-style:none; padding:0; margin:0; }
+body{ height:100%; overflow:hidden; background:url("../images/lottery.jpg") no-repeat center; background-size:auto 100%; }
+input{ outline:none; }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button{
+  -webkit-appearance:none;
+}
+input[type="number"]{
+  -moz-appearance:textfield;
+}
+.ui-tab-bd{ display:none; }
+.ui-tab-bd.current{ display:block; }
+.lottery-tag1{ position:absolute; display:block; left:0; bottom:0; width:451px; height:334px; background:url("../images/lottery-tag.png") no-repeat; }
+.lottery-tag2{ position:absolute; display:block; right:0; top:0; width:256px; height:252px; background:url("../images/lottery-tag2.png") no-repeat; }
+.lottery-outer{ display:none; }
+.indexContainer{ position:absolute; left:0; top:0; width:100%; height:100%; }
+#drawCanvas{position:absolute; left:0; top:0; width:100%; height:100%; background:#000; opacity:0; }
+#drawCanvas canvas{ width:100% !important; height:100% !important; }
+
+#holder{ position:relative; height:100%; }
+#holder canvas{ width:100% !important; height:100% !important; display:block; background:none !important; }
+#indexContainer{ position:absolute; left:0; top:0; display:block; }
+#indexContainer img{ width:50px; height:50px; display:block; border-radius:10px; border:#fff 2px solid; opacity: 0.7; transform:rotateX(180deg); }
+#indexContainer > div{ transform:rotateX(180deg); }
+#container{ position:absolute; left:0; top:0; display:block; }
+#container img{ width:120px; height:120px; display:block; border-radius:10px; border:#fff 2px solid; }
+.lottery-ball{ position:absolute; left:0; top:0; width:100%; height:100%; background:url("../images/lottery-ball.png") no-repeat center center; background-size:839px 800px }
+.lottery-ball .logo-zmsc{ position:absolute; left:50%; top:50%; margin:-88px 0 0 -314px; width:628px; height:176px; background:url("../images/logo-zmsc.png") no-repeat; }
+.lottery-ball .logo-yfwl{ position:absolute; left:50%; top:50%; margin:-87px 0 0 -313px; width:625px; height:173px; background:url("../images/logo-yfwl.png") no-repeat; }
+
+.lottery-logo{ position:absolute; display:block; left:0; top:0; width:595px; height:186px; background:url("../images/lottery-tag3.png") no-repeat; }
+.lottery-logo .logo-zmsc{ position:absolute; left:50%; top:50%; margin:-35px 0 0 -132px; width:264px; height:90px; background:url("../images/logo-zmsc.png") no-repeat; background-size:100%; }
+.lottery-logo .logo-yfwl{ position:absolute; left:50%; top:50%; margin:-25px 0 0 -128px; width:256px; height:72px; background:url("../images/logo-yfwl.png") no-repeat; background-size:100%; }
+.lottery-btn{ position:absolute; right:5%; bottom:65px; }
+.lottery-start,
+.lottery-record{ width:146px; height:51px; float:left; margin:0 30px; }
+.lottery-start{ background:url("../images/lottery-start.png") no-repeat; }
+.lottery-record{ background:url("../images/lottery-record.png") no-repeat; }
+.lottery-console{ position:absolute; right:5%; top:90px; width:383px; height:63px; padding:0 80px; box-sizing:border-box; background:url("../images/lottery-console.png") no-repeat; font-size:30px; font-weight:bold; line-height:63px; color:#fff; }
+.lottery-console input{ background:none; border:none; padding:0; width:45px; color:#fff; font-size:30px; text-align:center; }
+.lottery-console a{ position:absolute; top:0; display:block; width:80px; height:63px; line-height:63px; }
+.lottery-console .lottery-num{ padding-left:10px; }
+.lottery-console .lottery-left{ left:0; }
+.lottery-console .lottery-right{ right:0; }
+.winner-box{ position:absolute; left:50%; top:50%; margin:-339px 0 0 -554px; width:1108px; height:677px; background:url("../images/winner-box.png") no-repeat; }
+.winner-title{ margin:-30px auto 0; width:336px; height:99px; background:url("../images/winner-title.png") no-repeat; }
+.winner-close{ position:absolute; right:-65px; top:30px; display:block; width:100px; height:88px; background:url("../images/winner-close.png") no-repeat; }
+.winner-list{ padding:0 35px; }
+.winner-list .list-tab{ }
+.winner-list .list-tab ul{ overflow:hidden; }
+.winner-list .list-tab li{ float:left; padding:0 7px; display:none; }
+.winner-list .list-tab li a{ display:block; width:119px; height:49px; border:#fff 2px solid; border-radius:5px 5px 0 0; background:rgba(255, 255, 255, 0.1); text-align:center; line-height:45px; font-size:24px; color:#fff; }
+.winner-list .list-tab .current a{ color:#faec12; }
+.winner-list .list-box{ margin-top:-2px; border:#fff 2px solid; border-radius:5px; background:rgba(255, 255, 255, 0.1); height:525px; overflow:auto; }
+.winner-list .list-box ul{ overflow:hidden; }
+.winner-list .list-box li{ position:relative; float:left; padding-left:50px; margin:0 20px; }
+.winner-list .list-box li i{ position:absolute; left:0; top:50%; margin-top:-18px; font-style:normal; color:#fff; font-size:26px; }
+.winner-list .list-box li p{ padding:10px 0 0 ; position:relative; min-height:60px; margin:20px 0; }
+.winner-list .list-box li p img{ position:absolute; top:0; left:0; width:60px; height:60px; display:block; border-radius:50%; }
+.winner-list .list-box li p em{ display:block; margin-left:15px; width:375px; padding:0 40px 0 50px; font-style:normal; font-size:20px; color:#fff; height:40px; line-height:40px; background:linear-gradient(to right, rgba(255, 255, 255, .2), rgba(255, 255, 255, 0)); }
+/*
+.winner-list .list-bd .bd-tab{ height:46px; background:linear-gradient(#42a2c5, #1367a9); border-bottom:#428eb9 2px solid;  }
+.winner-list .list-bd .bd-tab ul{ overflow:hidden; }
+.winner-list .list-bd .bd-tab li{ float:left; }
+.winner-list .list-bd .bd-tab li a{ display:block; width:142px; height:46px; text-align:center; line-height:44px; color:#a3e4fb; }
+.winner-list .list-bd .bd-tab li.current a{ background:url("../images/tab-btn-hover.png") no-repeat; }
+.winner-list .list-bd .bd-box{ padding-top:12px; }
+.winner-list .list-bd .bd-box ul{ overflow:hidden; }
+.winner-list .list-bd .bd-box li{ position:relative; float:left; padding-left:50px; margin:0 20px; }
+.winner-list .list-bd .bd-box li i{ position:absolute; left:0; top:50%; margin-top:-18px; font-style:normal; color:#fff; font-size:26px; }
+.winner-list .list-bd .bd-box li p{ padding:10px 0 0 ; position:relative; min-height:60px; margin:20px 0; }
+.winner-list .list-bd .bd-box li p img{ position:absolute; top:0; left:0; width:60px; height:60px; display:block; border-radius:50%; }
+.winner-list .list-bd .bd-box li p em{ display:block; margin-left:15px; padding:0 40px 0 50px; font-style:normal; font-size:20px; color:#fff; height:40px; line-height:40px; background:linear-gradient(to right, rgba(255, 255, 255, .2), rgba(255, 255, 255, 0)); }
+*/
+.lottery-award{ position:absolute; left:0; top:0; width:100%; height:100%; }
+.lottery-award ul{ overflow:hidden; height:100%; }
+.lottery-award li{ position:absolute; left:50%; top:50%; overflow:hidden; transform:scale(0) translate(0, 0); }
+.lottery-award li:nth-child(1).current{ animation:move1 2s forwards; margin:-95px 0 0 -100px; }
+.lottery-award li:nth-child(2).current{ animation:move2 2s forwards; margin:-95px 0 0 -100px; }
+.lottery-award li:nth-child(3).current{ animation:move3 2s forwards; margin:-95px 0 0 -100px; }
+.lottery-award li:nth-child(4).current{ animation:move4 2s forwards; margin:-95px 0 0 -100px; }
+.lottery-award li:nth-child(4).current3{ animation:move6 2s forwards; margin:-95px 0 0 -100px; }
+.lottery-award li:nth-child(5).current{ animation:move5 2s forwards; margin:-95px 0 0 -100px; }
+.lottery-award li:nth-child(5).current2{ animation:move6 2s forwards; margin:-95px 0 0 -100px; }
+.lottery-award li:nth-child(5).current3{ animation:move7 2s forwards; margin:-95px 0 0 -100px; }
+.lottery-award li:nth-child(6).current{ animation:move6 2s forwards; margin:-95px 0 0 -100px; }
+.lottery-award li:nth-child(6).current2{ animation:move7 2s forwards; margin:-95px 0 0 -100px; }
+.lottery-award li:nth-child(6).current3{ animation:move8 2s forwards; margin:-95px 0 0 -100px; }
+.lottery-award li:nth-child(7).current{ animation:move7 2s forwards; margin:-95px 0 0 -100px; }
+.lottery-award li:nth-child(7).current2{ animation:move8 2s forwards; margin:-95px 0 0 -100px; }
+.lottery-award li:nth-child(8).current{ animation:move8 2s forwards; margin:-95px 0 0 -100px; }
+.lottery-award li:nth-child(8).current2{ animation:move9 2s forwards; margin:-95px 0 0 -100px; }
+.lottery-award li:nth-child(9).current{ animation:move9 2s forwards; margin:-95px 0 0 -100px; }
+.lottery-award li:nth-child(10).current{ animation:move10 2s forwards; margin:-95px 0 0 -100px; }
+.lottery-award li:nth-child(11).current{ animation:move11 2s forwards; margin:-95px 0 0 -100px; }
+.lottery-award li:nth-child(12).current{ animation:move12 2s forwards; margin:-95px 0 0 -100px; }
+.lottery-award li:nth-child(13).current{ animation:move13 2s forwards; margin:-95px 0 0 -100px; }
+.lottery-award li:nth-child(14).current{ animation:move14 2s forwards; margin:-95px 0 0 -100px; }
+.lottery-award li:nth-child(15).current{ animation:move15 2s forwards; margin:-95px 0 0 -100px; }
+.lottery-award li img{ width:150px; height:150px; display:block; border-radius:50%; border:#fec90b 5px solid; margin:auto; box-shadow:0 0 15px #4589bc; }
+.lottery-award li em,
+.lottery-award li p{ display:block; margin:0; width:200px; height:40px; line-height:40px; text-align:center; font-style:normal; color:#fff; }
+.prize-title{ position:absolute; left:50%; top:8%; text-shadow:0 0 15px #426898; margin-left:-168px; width:336px; height:99px; line-height:80px; background:url("../images/prize-title.png") no-repeat; text-align:center; font-size:36px; color:#f9c70c; }
+.prize-inner{ position:relative; width:1200px; margin:auto; height:100%; }
+
+@keyframes move1{
+  0%{ transform:scale(0); left:50%; top:50%; }
+  25%{ transform:scale(0); left:50%; top:50%; }
+  45%{ transform:scale(1); left:50%; top:50%; }
+  65%{ transform:scale(1); left:50%; top:50%; }
+  100%{ transform:scale(1); left:120px; top:300px; }
+}
+
+@keyframes move2{
+  0%{ transform:scale(0); left:50%; top:50%; }
+  25%{ transform:scale(0); left:50%; top:50%; }
+  45%{ transform:scale(1); left:50%; top:50%; }
+  65%{ transform:scale(1); left:50%; top:50%; }
+  100%{ transform:scale(1); left:360px; top:300px; }
+}
+
+@keyframes move3{
+  0%{ transform:scale(0); left:50%; top:50%; }
+  25%{ transform:scale(0); left:50%; top:50%; }
+  45%{ transform:scale(1); left:50%; top:50%; }
+  65%{ transform:scale(1); left:50%; top:50%; }
+  100%{ transform:scale(1); left:600px; top:300px; }
+}
+
+@keyframes move4{
+  0%{ transform:scale(0); left:50%; top:50%; }
+  25%{ transform:scale(0); left:50%; top:50%; }
+  45%{ transform:scale(1); left:50%; top:50%; }
+  65%{ transform:scale(1); left:50%; top:50%; }
+  100%{ transform:scale(1); left:840px; top:300px; }
+}
+@keyframes move5{
+  0%{ transform:scale(0); left:50%; top:50%; }
+  25%{ transform:scale(0); left:50%; top:50%; }
+  45%{ transform:scale(1); left:50%; top:50%; }
+  65%{ transform:scale(1); left:50%; top:50%; }
+  100%{ transform:scale(1); left:1080px; top:300px; }
+}
+@keyframes move6{
+  0%{ transform:scale(0); left:50%; top:50%; }
+  25%{ transform:scale(0); left:50%; top:50%; }
+  45%{ transform:scale(1); left:50%; top:50%; }
+  65%{ transform:scale(1); left:50%; top:50%; }
+  100%{ transform:scale(1); left:120px; top:570px; }
+}
+@keyframes move7{
+  0%{ transform:scale(0); left:50%; top:50%; }
+  25%{ transform:scale(0); left:50%; top:50%; }
+  45%{ transform:scale(1); left:50%; top:50%; }
+  65%{ transform:scale(1); left:50%; top:50%; }
+  100%{ transform:scale(1); left:360px; top:570px; }
+}
+@keyframes move8{
+  0%{ transform:scale(0); left:50%; top:50%; }
+  25%{ transform:scale(0); left:50%; top:50%; }
+  45%{ transform:scale(1); left:50%; top:50%; }
+  65%{ transform:scale(1); left:50%; top:50%; }
+  100%{ transform:scale(1); left:600px; top:570px; }
+}
+@keyframes move9{
+  0%{ transform:scale(0); left:50%; top:50%; }
+  25%{ transform:scale(0); left:50%; top:50%; }
+  45%{ transform:scale(1); left:50%; top:50%; }
+  65%{ transform:scale(1); left:50%; top:50%; }
+  100%{ transform:scale(1); left:840px; top:570px; }
+}
+@keyframes move10{
+  0%{ transform:scale(0); left:50%; top:50%; }
+  25%{ transform:scale(0); left:50%; top:50%; }
+  45%{ transform:scale(1); left:50%; top:50%; }
+  65%{ transform:scale(1); left:50%; top:50%; }
+  100%{ transform:scale(1); left:1080px; top:570px; }
+}
+@keyframes move11{
+  0%{ transform:scale(0); left:50%; top:50%; }
+  25%{ transform:scale(0); left:50%; top:50%; }
+  45%{ transform:scale(1); left:50%; top:50%; }
+  65%{ transform:scale(1); left:50%; top:50%; }
+  100%{ transform:scale(1); left:120px; top:820px; }
+}
+@keyframes move12{
+  0%{ transform:scale(0); left:50%; top:50%; }
+  25%{ transform:scale(0); left:50%; top:50%; }
+  45%{ transform:scale(1); left:50%; top:50%; }
+  65%{ transform:scale(1); left:50%; top:50%; }
+  100%{ transform:scale(1); left:360px; top:820px; }
+}
+@keyframes move13{
+  0%{ transform:scale(0); left:50%; top:50%; }
+  25%{ transform:scale(0); left:50%; top:50%; }
+  45%{ transform:scale(1); left:50%; top:50%; }
+  65%{ transform:scale(1); left:50%; top:50%; }
+  100%{ transform:scale(1); left:600px; top:820px; }
+}
+@keyframes move14{
+  0%{ transform:scale(0); left:50%; top:50%; }
+  25%{ transform:scale(0); left:50%; top:50%; }
+  45%{ transform:scale(1); left:50%; top:50%; }
+  65%{ transform:scale(1); left:50%; top:50%; }
+  100%{ transform:scale(1); left:840px; top:820px; }
+}
+@keyframes move15{
+  0%{ transform:scale(0); left:50%; top:50%; }
+  25%{ transform:scale(0); left:50%; top:50%; }
+  45%{ transform:scale(1); left:50%; top:50%; }
+  65%{ transform:scale(1); left:50%; top:50%; }
+  100%{ transform:scale(1); left:1080px; top:820px; }
+}
+
+.avatar-container{
+  position:fixed;
+  top:50%;
+  left:50%;
+  width:150px;
+  height:150px;
+  transform:translate(-75px, -75px);
+}
+.avatar{
+  /*background-image: url("https://s-media-cache-ak0.pinimg.com/236x/3c/41/74/3c41748bb2526f33c5ff6aa3adcd0b20.jpg");	*/
+  overflow:hidden;
+  border-radius:50%;
+  border:solid 3px rgba(0, 150, 136, 0.3);
+  width:150px;
+  height:150px;
+  background-size:cover;
+  z-index:2;
+  position:absolute;
+  cursor:pointer;
+}
+.avatar img{
+  width:100%;
+  height:100%;
+}
+.pulse{
+  width:150px;
+  height:150px;
+  border-radius:50%;
+  background:rgba(0, 150, 136, 0.2);
+  position:absolute;
+  top:0;
+  left:0;
+  border:solid 2px #00796B;
+  z-index:1;
+}
+.name{
+  position:fixed;
+  top:calc(50% + 130px);
+  text-align:center;
+  left:50%;
+  transform:translateX(-50%);
+  text-transform:uppercase;
+  color:white;
+  background:rgba(0, 150, 136, 0.2);
+  border:solid 2px #00796B;
+  padding:5px 10px;
+  font-family:'Quicksand', sans-serif;
+  opacity:0;
+}
+.info{
+  color:white;
+  text-transform:uppercase;
+  font-family:'Quicksand', sans-serif;
+  position:fixed;
+  right:10px;
+  bottom:10px;
+  font-size:10px;
+  opacity:0.5;
+}
